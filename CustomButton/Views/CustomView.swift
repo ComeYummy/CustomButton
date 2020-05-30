@@ -41,9 +41,38 @@ class CustomView: UIView {
             addGradient()
         }
     }
-    @IBInspectable var gradeintBottomColor: UIColor?{
+    @IBInspectable var gradeintBottomColor: UIColor? {
         didSet {
             addGradient()
+        }
+    }
+
+    // 影の方向（width=右方向、height=下方向）
+    @IBInspectable var shadowOffset:CGSize = .zero {
+        didSet {
+            self.layer.shadowOffset = shadowOffset
+        }
+    }
+
+    // 影の色
+    @IBInspectable var shadowColor: UIColor = .black {
+        didSet {
+            self.layer.shadowColor = shadowColor.cgColor
+        }
+    }
+
+    // 影の濃さ
+    @IBInspectable var shadowOpacity: Float = 0 {
+        didSet {
+
+            self.layer.shadowOpacity = shadowOpacity / 100.0
+        }
+    }
+
+    // 影の長さ
+    @IBInspectable var shadowRadius: CGFloat = 0 {
+        didSet {
+            self.layer.shadowRadius = shadowRadius
         }
     }
 

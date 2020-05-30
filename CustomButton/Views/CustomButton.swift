@@ -33,8 +33,6 @@ class CustomButton: UIButton {
         }
     }
 
-
-
     // グラデーションのlayer
     var gradientLayer = CAGradientLayer()
 
@@ -47,6 +45,34 @@ class CustomButton: UIButton {
     @IBInspectable var gradeintBottomColor: UIColor?{
         didSet {
             addGradient()
+        }
+    }
+
+    // 影の方向（width=右方向、height=下方向）
+    @IBInspectable var shadowOffset:CGSize = .zero {
+        didSet {
+            self.layer.shadowOffset = shadowOffset
+        }
+    }
+
+    // 影の色
+    @IBInspectable var shadowColor: UIColor = .black {
+        didSet {
+            self.layer.shadowColor = shadowColor.cgColor
+        }
+    }
+
+    // 影の濃さ
+    @IBInspectable var shadowOpacity: Float = 0 {
+        didSet {
+            self.layer.shadowOpacity = shadowOpacity / 100.0
+        }
+    }
+
+    // 影の長さ
+    @IBInspectable var shadowRadius: CGFloat = 0 {
+        didSet {
+            self.layer.shadowRadius = shadowRadius
         }
     }
 
@@ -67,10 +93,10 @@ class CustomButton: UIButton {
 
         let gradientColors: [CGColor] = [topColor.cgColor, bottomColor.cgColor]
         gradientLayer.colors = gradientColors
+        gradientLayer.cornerRadius = self.frame.height / 2.0
         gradientLayer.frame = self.bounds
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         gradientLayer.endPoint = CGPoint(x: 1, y: 0)
         self.layer.insertSublayer(gradientLayer, at: 0)
-        self.clipsToBounds = true
     }
 }
