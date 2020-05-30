@@ -77,6 +77,7 @@ class CustomButton: UIButton {
     }
 
     override func awakeFromNib() {
+        super.awakeFromNib()
         // 角丸の半径をボタン高さの半分にする
         cornerRadius = self.frame.height / 2.0
         // グラデーションを追加

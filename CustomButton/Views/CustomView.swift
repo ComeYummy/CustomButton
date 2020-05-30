@@ -77,6 +77,7 @@ class CustomView: UIView {
     }
 
     override func awakeFromNib() {
+        super.awakeFromNib()
         // グラデーションを追加
         addGradient()
     }
